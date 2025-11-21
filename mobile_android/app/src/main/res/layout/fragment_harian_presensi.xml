@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Tambahkan ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_report_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="@string/laporan_tanggal_default"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_marginBottom="16dp">
+
+        <TextView android:id="@+id/tv_total_petugas" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/total_petugas_default" android:textStyle="bold" />
+        <TextView android:id="@+id/tv_petugas_hadir" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/petugas_hadir_default" android:textColor="@color/design_default_color_primary" />
+        <TextView android:id="@+id/tv_petugas_belum_hadir" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/petugas_belum_hadir_default" android:textColor="@android:color/holo_red_dark" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_status_presensi"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_harian_presensi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

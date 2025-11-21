@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Satgas Keamanan</string>
+    <string name="laporan_tanggal">Laporan Tanggal: %1$s</string>
+    <string name="total_petugas">Total: %1$d</string>
+    <string name="petugas_hadir">Hadir: %1$d</string>
+    <string name="petugas_belum_hadir">Absen: %1$d</string>
+    <string name="detail_status_presensi">Detail Status Presensi Petugas:</string>
+    <string name="laporan_tanggal_default">Laporan Tanggal: -</string>
+    <string name="total_petugas_default">Total: 0</string>
+    <string name="petugas_hadir_default">Hadir: 0</string>
+    <string name="petugas_belum_hadir_default">Absen: 0</string>
+    <string name="status_hadir">HADIR</string>
+    <string name="status_absen">ABSEN</string>
+    <string name="presensi_terakhir">Presensi Terakhir: %1$s</string>
+    <string name="presensi_data_tidak_tersedia">Presensi Terakhir: Data tidak tersedia</string>
+    <string name="belum_presensi_hari_ini">Belum presensi hari ini.</string>
+    <string name="status_format">Status: %1$s</string>
+    <string name="tutup_laporan">Tutup Laporan</string>
+</resources>

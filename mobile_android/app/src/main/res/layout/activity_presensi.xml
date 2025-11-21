@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lokasi belum diambil"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgSelfie"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="#DDDDDD"
+            android:scaleType="centerCrop" />
+
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Catatan (Opsional)"
+            android:layout_marginTop="16dp"
+            android:minHeight="48dp"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btnAmbilFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ambil Foto"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnKirim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kirim Presensi"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

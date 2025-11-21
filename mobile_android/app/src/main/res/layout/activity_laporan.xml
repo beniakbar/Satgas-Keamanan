@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buat Laporan Baru"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Title Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Judul Laporan"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contoh: Pencurian Helm"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Description Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi Kejadian"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jelaskan detail kejadian..."
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:gravity="top"
+            android:minLines="4"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Photo Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bukti Foto"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <ImageView
+            android:id="@+id/imgLaporanPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:scaleType="centerInside"
+            android:background="#E0E0E0"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnAmbilFotoLaporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ambil Foto"
+            android:backgroundTint="#757575"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnKirimLaporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kirim Laporan"
+            android:backgroundTint="?attr/colorPrimary"
+            android:padding="14dp"/>
+
+    </LinearLayout>
+</ScrollView>
