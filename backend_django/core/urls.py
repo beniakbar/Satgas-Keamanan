@@ -28,8 +28,9 @@ router.register(r'admin/laporan', AdminLaporanViewSet, basename='admin-laporan')
 
 
 urlpatterns = [
-    path('', include(router.urls)),
-
+    # PENTING: URL spesifik harus diletakkan SEBELUM include(router.urls)
+    # agar tidak tertutup oleh pola regex router (misal: admin/laporan/{pk})
+    
     # Admin: laporan presensi harian
     path(
         'admin/laporan/harian/',
@@ -37,8 +38,10 @@ urlpatterns = [
         name='harian-presensi-report'
     ),
     
-    # PERBAIKAN KRITIS: Tambahkan 'user/' di sini agar cocok dengan permintaan klien Android
+    # User endpoints
     path('user/profile/', UserProfileView.as_view(), name='user-profile'), 
-
     path('user/register/', RegisterUserView.as_view(), name='user-register'),
+
+    # Router URLs (General patterns)
+    path('', include(router.urls)),
 ]

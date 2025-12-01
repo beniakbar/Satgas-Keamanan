@@ -7,22 +7,53 @@ public class AdminPresensiModel {
     @SerializedName("id")
     private int id;
 
-    @SerializedName("check_in")
-    private String checkIn;
+    @SerializedName("timestamp")
+    private String timestamp;
 
-    @SerializedName("check_out")
-    private String checkOut;
+    @SerializedName("latitude")
+    private double latitude;
 
-    @SerializedName("date")
-    private String date;
+    @SerializedName("longitude")
+    private double longitude;
 
-    // Alias untuk getCheckIn() jika digunakan sebagai timestamp
-    public String getTimestamp() {
-        return checkIn;
+    @SerializedName("location_note")
+    private String locationNote;
+
+    @SerializedName("note")
+    private String note;
+
+    @SerializedName("selfie_photo")
+    private String selfiePhoto;
+    
+    @SerializedName("petugas_name")
+    private String petugasName;
+
+    @SerializedName("petugas_email")
+    private String petugasEmail;
+
+    // Default Constructor
+    public AdminPresensiModel() {
     }
 
+    // Getters
     public int getId() { return id; }
-    public String getCheckIn() { return checkIn; }
-    public String getCheckOut() { return checkOut; }
-    public String getDate() { return date; }
+    public String getTimestamp() { return timestamp; }
+    public double getLatitude() { return latitude; }
+    public double getLongitude() { return longitude; }
+    public String getLocationNote() { return locationNote; }
+    public String getNote() { return note; }
+    public String getSelfiePhoto() { return selfiePhoto; }
+    public String getPetugasName() { return petugasName; }
+    public String getPetugasEmail() { return petugasEmail; }
+
+    // Setters
+    public void setId(int id) { this.id = id; }
+    public void setTimestamp(String timestamp) { this.timestamp = timestamp; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public void setLocationNote(String locationNote) { this.locationNote = locationNote; }
+    public void setNote(String note) { this.note = note; }
+    public void setSelfiePhoto(String selfiePhoto) { this.selfiePhoto = selfiePhoto; }
+    public void setPetugasName(String petugasName) { this.petugasName = petugasName; }
+    public void setPetugasEmail(String petugasEmail) { this.petugasEmail = petugasEmail; }
 }

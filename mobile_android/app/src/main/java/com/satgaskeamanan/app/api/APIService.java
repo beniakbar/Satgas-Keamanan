@@ -25,6 +25,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.Part;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -93,7 +94,7 @@ public interface APIService {
             @Body Map<String, String> statusUpdate
     );
 
-    // Endpoint rekap presensi harian (sesuai konfirmasi pengguna)
+    // Endpoint rekap presensi harian
     @GET("admin/laporan/harian/")
-    Call<HarianPresensiReportModel> getHarianPresensiReport();
+    Call<HarianPresensiReportModel> getHarianPresensiReport(@Query("date") String date);
 }

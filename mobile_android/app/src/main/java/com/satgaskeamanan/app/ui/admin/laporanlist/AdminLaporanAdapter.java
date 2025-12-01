@@ -16,11 +16,18 @@ import java.util.List;
 public class AdminLaporanAdapter extends RecyclerView.Adapter<AdminLaporanAdapter.LaporanViewHolder> {
 
     private List<AdminLaporanModel> laporanList;
-    private OnStatusChangeListener listener;
+    private OnStatusChangeListener statusListener;
+    private OnItemClickListener itemClickListener;
 
-    public AdminLaporanAdapter(List<AdminLaporanModel> laporanList, OnStatusChangeListener listener) {
+    // Interface untuk menangani klik item (detail)
+    public interface OnItemClickListener {
+        void onItemClick(AdminLaporanModel laporan);
+    }
+
+    public AdminLaporanAdapter(List<AdminLaporanModel> laporanList, OnStatusChangeListener statusListener, OnItemClickListener itemClickListener) {
         this.laporanList = laporanList;
-        this.listener = listener;
+        this.statusListener = statusListener;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -38,13 +45,22 @@ public class AdminLaporanAdapter extends RecyclerView.Adapter<AdminLaporanAdapte
         holder.tvNote.setText(laporan.getNote());
         holder.tvStatus.setText(holder.itemView.getContext().getString(R.string.status_format, laporan.getStatus()));
 
+        // Set Listener untuk Klik Item (Detail)
+        holder.itemView.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(laporan);
+            }
+        });
+
         // Logika Tombol Aksi (Misal: Tombol untuk menutup laporan)
         if ("open".equals(laporan.getStatus()) || "in_progress".equals(laporan.getStatus())) {
             holder.btnAksi.setVisibility(View.VISIBLE);
             holder.btnAksi.setText(R.string.tutup_laporan);
             holder.btnAksi.setOnClickListener(v -> {
                 // Panggil listener di Fragment untuk menjalankan PATCH request
-                listener.onStatusUpdateClicked(laporan.getId(), "closed");
+                if (statusListener != null) {
+                    statusListener.onStatusUpdateClicked(laporan.getId(), "closed");
+                }
             });
         } else {
             holder.btnAksi.setVisibility(View.GONE);

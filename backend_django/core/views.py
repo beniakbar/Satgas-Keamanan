@@ -10,6 +10,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 from django.utils import timezone
+from django.utils.dateparse import parse_date
 
 from .models import User, Presensi, Laporan
 from .serializers import (
@@ -140,15 +141,37 @@ class HarianPresensiReportView(APIView):
     permission_classes = [IsAdmin]
 
     def get(self, request):
+        # Ambil parameter 'date' dari query string
+        date_str = request.query_params.get('date')
+        target_date = timezone.localdate() # Default hari ini
+
+        if date_str:
+            parsed_date = parse_date(date_str)
+            if parsed_date:
+                target_date = parsed_date
+            else:
+                return Response({'error': 'Format tanggal salah. Gunakan YYYY-MM-DD'}, status=status.HTTP_400_BAD_REQUEST)
+
         petugas_queryset = User.objects.filter(is_petugas=True).order_by('email')
-        serializer = PetugasStatusPresensiSerializer(petugas_queryset, many=True)
+        
+        # PERBAIKAN: Sertakan 'request' dalam context agar ImageField dapat membuat URL absolut
+        serializer_context = {
+            'request': request,
+            'target_date': target_date
+        }
+        
+        serializer = PetugasStatusPresensiSerializer(
+            petugas_queryset, 
+            many=True, 
+            context=serializer_context
+        )
 
         data = serializer.data
         total_petugas = len(data)
         hadir = sum(1 for p in data if p.get('has_presensi_today'))
 
         return Response({
-            'report_date': timezone.localdate().isoformat(),
+            'report_date': target_date.isoformat(),
             'total_petugas': total_petugas,
             'petugas_hadir': hadir,
             'petugas_belum_hadir': total_petugas - hadir,

@@ -14,14 +14,32 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/tv_report_date"
+    <!-- Container untuk Tanggal dan Tombol Pilih Tanggal -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="@string/laporan_tanggal_default"
-        android:textSize="14sp"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tv_report_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="italic"
+            android:text="@string/laporan_tanggal_default"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btn_pilih_tanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Histori Presensi"
+            android:textSize="12sp"
+            android:minHeight="40dp"
+            android:paddingHorizontal="12dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -19,10 +19,18 @@ public class HarianPresensiAdapter extends RecyclerView.Adapter<HarianPresensiAd
 
     private final List<PetugasStatusPresensiModel> petugasList;
     private final Context context;
+    private final OnItemClickListener listener;
 
-    public HarianPresensiAdapter(Context context, List<PetugasStatusPresensiModel> petugasList) {
+    // Interface untuk menangani klik item
+    public interface OnItemClickListener {
+        void onItemClick(PetugasStatusPresensiModel petugas);
+    }
+
+    // Konstruktor sekarang menerima Listener
+    public HarianPresensiAdapter(Context context, List<PetugasStatusPresensiModel> petugasList, OnItemClickListener listener) {
         this.context = context;
         this.petugasList = petugasList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,8 +55,15 @@ public class HarianPresensiAdapter extends RecyclerView.Adapter<HarianPresensiAd
             if (lastPresensi != null) {
                 // Tampilkan waktu presensi terakhir hari ini
                 holder.tvWaktu.setText(context.getString(R.string.presensi_terakhir, lastPresensi.getTimestamp()));
+                
+                // Enable Click Listener hanya jika data presensi ada
+                holder.itemView.setOnClickListener(v -> listener.onItemClick(petugas));
+                holder.itemView.setClickable(true);
+                holder.itemView.setFocusable(true);
             } else {
                 holder.tvWaktu.setText(R.string.presensi_data_tidak_tersedia);
+                holder.itemView.setOnClickListener(null);
+                holder.itemView.setClickable(false);
             }
 
         } else {
@@ -58,6 +73,9 @@ public class HarianPresensiAdapter extends RecyclerView.Adapter<HarianPresensiAd
 
             // Tampilkan informasi login terakhir atau kosongkan
             holder.tvWaktu.setText(R.string.belum_presensi_hari_ini);
+            
+            holder.itemView.setOnClickListener(null);
+            holder.itemView.setClickable(false);
         }
     }
 
